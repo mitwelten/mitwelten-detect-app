@@ -10,12 +10,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ProgressListComponent } from './components/progress-list/progress-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OverviewComponent
+    OverviewComponent,
+    ProgressListComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +29,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
+    MatProgressBarModule,
     LayoutModule
   ],
   providers: [],
