@@ -14,7 +14,7 @@ export class OverviewComponent {
       if (matches) {
         return [
           { title: 'Card 1', id: 1, cols: 1, rows: 1 },
-          { title: 'Card 2', id: 2, cols: 1, rows: 1 },
+          { title: 'Queue Progress', id: 2, cols: 1, rows: 1 },
           { title: 'Card 3', id: 3, cols: 1, rows: 1 },
           { title: 'Card 4', id: 4, cols: 1, rows: 1 }
         ];
@@ -22,7 +22,7 @@ export class OverviewComponent {
 
       return [
         { title: 'Card 1', id: 1, cols: 2, rows: 1 },
-        { title: 'Card 2', id: 2, cols: 1, rows: 1 },
+        { title: 'Queue Progress', id: 2, cols: 1, rows: 1 },
         { title: 'Card 3', id: 3, cols: 1, rows: 2 },
         { title: 'Card 4', id: 4, cols: 1, rows: 1 }
       ];

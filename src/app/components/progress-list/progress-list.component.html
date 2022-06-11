@@ -1,1 +1,6 @@
-<mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+
+<div *ngFor="let p of progressList" style="display: grid; grid-template-columns: 0.5fr 1fr 2fr; column-gap: 10px;align-items: center; justify-items: start;">
+  <span>Batch {{ p.id }}</span>
+  <span>{{ p.percent | number }}% ({{p.complete}} / {{ p.pending + p.complete}})</span>
+  <mat-progress-bar mode="determinate" value="{{p.percent}}"></mat-progress-bar>
+</div>
