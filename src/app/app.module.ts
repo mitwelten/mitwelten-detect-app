@@ -14,12 +14,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ProgressListComponent } from './components/progress-list/progress-list.component';
+import { InputListComponent } from './components/input-list/input-list.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { FileSizePipe } from './shared/file-size.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     OverviewComponent,
-    ProgressListComponent
+    ProgressListComponent,
+    InputListComponent,
+    FileSizePipe
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,10 @@ import { ProgressListComponent } from './components/progress-list/progress-list.
     MatIconModule,
     MatButtonModule,
     MatProgressBarModule,
-    LayoutModule
+    LayoutModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
