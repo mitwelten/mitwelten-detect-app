@@ -26,6 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { QueueListComponent } from './components/queue-list/queue-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ProgressListComponent,
     InputListComponent,
     FileSizePipe,
-    LoginFormComponent
+    LoginFormComponent,
+    QueueListComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LayoutModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatTooltipModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

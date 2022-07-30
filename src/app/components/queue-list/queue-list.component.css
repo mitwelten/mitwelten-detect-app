@@ -1,0 +1,12 @@
+.full-width-table {
+  width: 100%;
+}
+
+.table-container {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+td.mat-cell {
+  text-align: left;
+}
