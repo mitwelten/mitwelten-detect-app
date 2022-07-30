@@ -13,18 +13,16 @@ export class OverviewComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Input', id: 1, cols: 1, rows: 1 },
-          { title: 'Queue Progress', id: 2, cols: 1, rows: 1 },
-          { title: 'Details', id: 3, cols: 1, rows: 1 },
-          { title: 'BirdNET Configs', id: 4, cols: 1, rows: 1 }
+          { title: 'Task Queue', id: 1, cols: 2, rows: 1 },
+          { title: 'Details', id: 2, cols: 2, rows: 1 },
+          { title: 'Progress', id: 3, cols: 2, rows: 1 },
         ];
       }
 
       return [
-        { title: 'Input', id: 1, cols: 2, rows: 1 },
-        { title: 'Queue Progress', id: 2, cols: 1, rows: 1 },
-        { title: 'Details', id: 3, cols: 1, rows: 2 },
-        { title: 'BirdNET Configs', id: 4, cols: 1, rows: 1 }
+        { title: 'Task Queue', id: 1, cols: 2, rows: 1 },
+        { title: 'Details', id: 2, cols: 1, rows: 1 },
+        { title: 'Progress', id: 3, cols: 1, rows: 1 },
       ];
     })
   );

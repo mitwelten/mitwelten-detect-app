@@ -1,6 +1,6 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
+  <mat-grid-list cols="2" rowHeight="400px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <mat-card-header>
@@ -17,7 +17,8 @@
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <app-queue-list *ngIf="card.id === 1"></app-queue-list>
-          <app-progress-list *ngIf="card.id === 2"></app-progress-list>
+          <app-queue-detail *ngIf="card.id === 2" ></app-queue-detail>
+          <app-progress-list *ngIf="card.id === 3"></app-progress-list>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
