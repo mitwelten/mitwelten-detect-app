@@ -53,5 +53,8 @@ export class QueueListComponent implements OnInit, AfterViewInit {
     this.dataService.resumeTasks(node_label).subscribe();
   }
 
+  detail(node_label: string) {
+    this.dataService.getDetail(node_label);
+  }
 
 }

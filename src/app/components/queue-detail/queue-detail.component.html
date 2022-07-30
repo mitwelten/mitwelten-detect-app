@@ -1,0 +1,74 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<div class="container">
+  <div *ngIf="data && data.task_stats && !loading" id="details">
+
+    <h2 style="grid-column: 1/3;">{{data.node_label}}</h2>
+
+    <h3 style="grid-column: 1/3;">Task Stats</h3>
+
+    <p>total runtime</p>
+    <p>{{ data.task_stats.total_runtime | duration }}</p>
+
+    <p>average runtime</p>
+    <p>{{ data.task_stats.avg_runtime | duration }}</p>
+
+    <p>min/max runtime</p>
+    <p>
+      {{ data.task_stats.min_runtime | duration }} /
+      {{ data.task_stats.max_runtime | duration }}
+    </p>
+
+    <p style="grid-column: 1/3;">&nbsp;</p>
+
+    <p>first/last queued</p>
+    <p>
+      {{ data.task_stats.min_scheduled_on | date }} /
+      {{ data.task_stats.max_scheduled_on | date }}
+    </p>
+
+    <p>first/last processed</p>
+    <p>
+      {{ data.task_stats.min_end_on | date }} /
+      {{ data.task_stats.max_end_on | date }}
+    </p>
+
+    <h3 style="grid-column: 1/3;">Results</h3>
+
+    <p>total results</p>
+    <p>{{ data.result_stats.count | number }}</p>
+
+    <p>results w/ confidence > 90%</p>
+    <p>
+      {{ data.result_stats.count_conf_09 | number }}
+      ({{ (data.result_stats.count_conf_09 / data.result_stats.count) * 100 | number: '1.2-2' }}%)
+    </p>
+
+    <h3 style="grid-column: 1/3;">Pipeline Configuration</h3>
+
+    <p>model version</p>
+    <p>BirdNET_GLOBAL_2K_V2.1</p>
+
+    <p>overlap</p>
+    <p>0,0 seconds</p>
+
+    <p>species list</p>
+    <p style="text-align: start;">
+      <strong>automatic (inferred by location)</strong><br>
+      coordinates: (47.5377412653, 7.6137643856)<br>
+      season: all-year<br>
+      location filter threshold: 0.03
+    </p>
+
+    <h3 style="grid-column: 1/3;">Input Files</h3>
+
+    <p>median duration</p>
+    <p>{{ data.file_stats.common_duration | duration }}</p>
+
+    <p>first/last recording</p>
+    <p>
+      {{ data.file_stats.min_time | date }} /
+      {{ data.file_stats.max_time | date }}
+    </p>
+
+  </div>
+</div>

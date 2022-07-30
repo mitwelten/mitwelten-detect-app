@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 
@@ -12,9 +12,13 @@ export class DataService {
   private apiUrl = environment.apiUrl;
 
   progressData: BehaviorSubject<any[]>;
+  detailData: BehaviorSubject<any>;
+  detailDataLoading: BehaviorSubject<boolean>;
 
   constructor(private http: HttpClient) {
     this.progressData = new BehaviorSubject<any[]>([]);
+    this.detailData = new BehaviorSubject<any>({});
+    this.detailDataLoading = new BehaviorSubject<boolean>(false);
   }
 
   login(): Observable<boolean> {
@@ -26,6 +30,14 @@ export class DataService {
   getProgress() {
     this.http.get(`${this.apiUrl}/queue/progress/`).subscribe((data: any) => {
       this.progressData?.next(data);
+    });
+  }
+
+  getDetail(node_label: string) {
+    this.detailDataLoading.next(true);
+    this.http.get(`${this.apiUrl}/queue/detail/${node_label}`).subscribe((data: any) => {
+      this.detailData?.next(data);
+      this.detailDataLoading.next(false);
     });
   }
 

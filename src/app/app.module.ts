@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -28,6 +28,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { QueueListComponent } from './components/queue-list/queue-list.component';
+import { QueueDetailComponent } from './components/queue-detail/queue-detail.component';
+import { DurationPipe } from './shared/duration.pipe';
+
+import '@angular/common/locales/global/de';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,9 @@ import { QueueListComponent } from './components/queue-list/queue-list.component
     InputListComponent,
     FileSizePipe,
     LoginFormComponent,
-    QueueListComponent
+    QueueListComponent,
+    QueueDetailComponent,
+    DurationPipe,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +67,7 @@ import { QueueListComponent } from './components/queue-list/queue-list.component
     MatTooltipModule,
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: 'de-CH' },
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthErrorInterceptor, multi: true },
   ],
