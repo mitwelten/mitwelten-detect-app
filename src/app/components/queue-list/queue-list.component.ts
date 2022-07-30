@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -10,7 +10,7 @@ import { QueueListDataSource, QueueListItem } from './queue-list-datasource';
   templateUrl: './queue-list.component.html',
   styleUrls: ['./queue-list.component.css']
 })
-export class QueueListComponent implements AfterViewInit {
+export class QueueListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<QueueListItem>;
@@ -21,6 +21,10 @@ export class QueueListComponent implements AfterViewInit {
 
   constructor(private dataService: DataService) {
     this.dataSource = new QueueListDataSource(dataService);
+  }
+
+  ngOnInit(): void {
+    this.dataService.getProgress();
   }
 
   ngAfterViewInit(): void {

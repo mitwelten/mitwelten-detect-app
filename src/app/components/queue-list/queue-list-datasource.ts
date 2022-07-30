@@ -43,7 +43,7 @@ export class QueueListDataSource extends DataSource<QueueListItem> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
-      return merge(this.dataService.getProgress().pipe(map((data: any) => {
+      return merge(this.dataService.progressData.pipe(map((data: any) => {
         // console.log(data);
 
         this.data = data;

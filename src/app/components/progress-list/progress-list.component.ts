@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { interval, mergeMap, Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
 import { DataService } from 'src/app/shared/data.service';
 
 @Component({
@@ -7,16 +7,17 @@ import { DataService } from 'src/app/shared/data.service';
   templateUrl: './progress-list.component.html',
   styleUrls: ['./progress-list.component.css']
 })
-export class ProgressListComponent implements OnInit {
+export class ProgressListComponent implements OnInit, OnDestroy {
 
+  private timer: Subscription | undefined
   progressList: {id:number, percent:number, complete:number, pending:number}[] = []
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    interval(2 * 1000).pipe(
-      mergeMap(() => this.dataService.getProgress())
-    ).subscribe(pl => {
+    this.timer = interval(2 * 1000).subscribe(() => this.dataService.getProgress());
+
+    this.dataService.progressData.subscribe(pl => {
       this.progressList = []
       for (const p of Object.entries(pl)) {
         if (p[1]['complete'] < p[1]['total_count']) {
@@ -30,4 +31,9 @@ export class ProgressListComponent implements OnInit {
       }
     });
   }
+
+  ngOnDestroy(): void {
+    this.timer?.unsubscribe();
+  }
+
 }
