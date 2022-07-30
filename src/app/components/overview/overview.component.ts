@@ -13,14 +13,14 @@ export class OverviewComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Task Queue', id: 1, cols: 2, rows: 1 },
+          { title: 'BirdNET Task Queue', id: 1, cols: 2, rows: 1 },
           { title: 'Details', id: 2, cols: 2, rows: 1 },
           { title: 'Progress', id: 3, cols: 2, rows: 1 },
         ];
       }
 
       return [
-        { title: 'Task Queue', id: 1, cols: 2, rows: 1 },
+        { title: 'BirdNET Task Queue', id: 1, cols: 2, rows: 1 },
         { title: 'Details', id: 2, cols: 1, rows: 1 },
         { title: 'Progress', id: 3, cols: 1, rows: 1 },
       ];
