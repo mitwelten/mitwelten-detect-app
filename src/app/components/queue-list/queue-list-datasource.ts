@@ -90,6 +90,7 @@ export class QueueListDataSource extends DataSource<QueueListItem> {
         case 'node_label': return compare(a.node_label, b.node_label, isAsc);
         case 'count': return compare(+a.total_count, +b.total_count, isAsc);
         case 'size': return compare(+a.size, +b.size, isAsc);
+        case 'inferrence_state': return compare(a.complete/a.total_count, b.complete/b.total_count, isAsc);
         default: return 0;
       }
     });
