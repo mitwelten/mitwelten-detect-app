@@ -44,14 +44,14 @@
           <button *ngIf="row.failed > 0" mat-icon-button (click)="reset_failed(row.node_label);$event.stopPropagation()">
             <mat-icon class="material-symbols-outlined" matTooltip="Re-queue failed tasks" matTooltipPosition="before" matTooltipClass="tight-tooltip">sync_problem</mat-icon>
           </button>
-          <button mat-icon-button (click)="reset_all(row.node_label);$event.stopPropagation()">
-            <mat-icon class="material-symbols-outlined" matTooltip="Reset all tasks and delete results" matTooltipPosition="before" matTooltipClass="tight-tooltip">sync</mat-icon>
-          </button>
           <button *ngIf="row.pending > 0" mat-icon-button (click)="pause(row.node_label);$event.stopPropagation()">
             <mat-icon class="material-symbols-outlined" matTooltip="Pause pending tasks" matTooltipPosition="before" matTooltipClass="tight-tooltip">pause_circle</mat-icon>
           </button>
           <button *ngIf="row.paused > 0" mat-icon-button (click)="resume(row.node_label);$event.stopPropagation()">
             <mat-icon class="material-symbols-outlined" matTooltip="Resume paused tasks" matTooltipPosition="before" matTooltipClass="tight-tooltip">play_circle</mat-icon>
+          </button>
+          <button disabled mat-icon-button (click)="reset_all(row.node_label);$event.stopPropagation()">
+            <mat-icon class="material-symbols-outlined" matTooltip="Reset all tasks and delete results" matTooltipPosition="before" matTooltipClass="tight-tooltip">sync</mat-icon>
           </button>
         </td>
       </ng-container>
