@@ -33,24 +33,24 @@ export class QueueListComponent implements OnInit, AfterViewInit {
     this.table.dataSource = this.dataSource;
   }
 
-  queue(node_label: string | undefined, state: number | null | undefined) {
-    this.dataService.queueTasks(node_label, state).subscribe(() => console.log('sent off: queueTasks'));
+  queue(node_label?: string) {
+    this.dataService.queueTasks(node_label).subscribe();
   }
 
-  reset_failed(node_label: string | undefined) {
-    this.dataService.resetFailedTasks(node_label).subscribe(() => console.log('sent off: resetFailedTasks'));
+  reset_failed(node_label?: string) {
+    this.dataService.resetFailedTasks(node_label).subscribe();
   }
 
-  reset_all(node_label: string | undefined) {
+  reset_all(node_label?: string) {
     console.warn('not implemented, too dangerous :)');
   }
 
-  pause(node_label: string | undefined) {
-    this.dataService.pauseTasks(node_label).subscribe(() => console.log('sent off: pauseTasks'));
+  pause(node_label?: string) {
+    this.dataService.pauseTasks(node_label).subscribe();
   }
 
-  resume(node_label: string | undefined) {
-    this.dataService.resumeTasks(node_label).subscribe(() => console.log('sent off: resumeTasks'));
+  resume(node_label?: string) {
+    this.dataService.resumeTasks(node_label).subscribe();
   }
 
 

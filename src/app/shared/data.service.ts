@@ -33,8 +33,8 @@ export class DataService {
     return this.http.get(`${this.apiUrl}/queue/input/`);
   }
 
-  queueTasks(node_label: string | undefined, state: number | null | undefined) {
-    return this.http.post(`${this.apiUrl}/queue/input/`, { node_label, state });
+  queueTasks(node_label: string | undefined) {
+    return this.http.post(`${this.apiUrl}/queue/input/`, { node_label });
   }
 
   resetFailedTasks(node_label: string | undefined) {
