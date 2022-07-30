@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://data.mitwelten.org/manager/v1',
+  apiUrl: 'http://localhost:8000',
 };
 
 /*
