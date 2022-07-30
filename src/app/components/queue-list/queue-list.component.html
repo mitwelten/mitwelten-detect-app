@@ -24,7 +24,7 @@
       <ng-container matColumnDef="inferrence_state">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Inferrence State</th>
         <td mat-cell *matCellDef="let row">
-          {{ row.complete / row.total_count * 100 | number }}% ({{row.complete}} / {{ row.total_count}})
+          {{ row.complete / row.total_count * 100 | number: '1.2-2' }}% ({{row.complete}} / {{ row.total_count}})
           <span *ngIf="row.noqueue > 0">, unqueued: {{row.noqueue}}</span>
           <span *ngIf="row.pending > 0">, queued: {{row.pending}}</span>
           <span *ngIf="row.running > 0">, running: {{row.running}}</span>
