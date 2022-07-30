@@ -19,12 +19,14 @@ export class ProgressListComponent implements OnInit {
     ).subscribe(pl => {
       this.progressList = []
       for (const p of Object.entries(pl)) {
-        this.progressList.push({
-          id: +p[0],
-          percent: p[1]['complete']/ (p[1]['complete'] + p[1]['pending']) * 100,
-          complete: p[1]['complete'],
-          pending: p[1]['pending']
-        })
+        if (p[1]['complete'] < p[1]['total_count']) {
+          this.progressList.push({
+            id: p[1]['node_label'],
+            percent: p[1]['complete'] / (p[1]['total_count']) * 100,
+            complete: p[1]['complete'],
+            pending: p[1]['total_pending']
+          });
+        }
       }
     });
   }
