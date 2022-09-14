@@ -30,6 +30,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { QueueListComponent } from './components/queue-list/queue-list.component';
 import { QueueDetailComponent } from './components/queue-detail/queue-detail.component';
 import { DurationPipe } from './shared/duration.pipe';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { ResultsComponent } from './components/results/results.component';
 
 import '@angular/common/locales/global/de';
 
@@ -44,6 +46,7 @@ import '@angular/common/locales/global/de';
     QueueListComponent,
     QueueDetailComponent,
     DurationPipe,
+    ResultsComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +68,9 @@ import '@angular/common/locales/global/de';
     MatPaginatorModule,
     MatSortModule,
     MatTooltipModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    }),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de-CH' },

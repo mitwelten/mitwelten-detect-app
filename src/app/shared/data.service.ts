@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
+import { SpeciesDatum } from './species-datum';
 
 import { environment } from 'src/environments/environment';
 
@@ -59,6 +60,14 @@ export class DataService {
 
   resumeTasks(node_label: string | undefined) {
     return this.http.patch(`${this.apiUrl}/queue/input/`, { node_label, 'action': 'resume' });
+  }
+
+  getSpecies(confidence?: number) {
+    return this.http.get<SpeciesDatum[]>(`${this.apiUrl}/species/`);
+  }
+
+  getSpeciesDetail(species?: string) {
+    return this.http.get<SpeciesDatum[]>(`${this.apiUrl}/species/${species}/day/`);
   }
 
 }
