@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { EChartsOption } from 'echarts';
-import { Observable, of } from 'rxjs';
 import { DataService } from 'src/app/shared/data.service';
 import { SpeciesDatum } from 'src/app/shared/species-datum';
 
+interface SpeciesLabel {
+  value: string;
+  label_de: string;
+  label_en: string;
+}
 
 @Component({
   selector: 'app-results',
@@ -15,6 +19,8 @@ export class ResultsComponent implements OnInit {
   options?: EChartsOption;
   updateOptions?: EChartsOption;
   detailOptions?: EChartsOption;
+  species: SpeciesDatum[] = [];
+  chartInstance: any;
 
   initOpts = {
     height: 350
@@ -25,11 +31,13 @@ export class ResultsComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getSpecies().subscribe((species: SpeciesDatum[]) => {
 
-      const x: string[] = [];
+      this.species = species;
+
+      const x: SpeciesLabel[] = [];
       const y: number[] = [];
 
       species.forEach(s => {
-        x.push(s.species);
+        x.push({value:s.species, label_de: s.label_de, label_en: s.label_en});
         y.push(s.count);
       });
 
@@ -73,7 +81,8 @@ export class ResultsComponent implements OnInit {
             inside: true,
             color: 'black',
             textBorderColor: 'white',
-            textBorderWidth: 2
+            textBorderWidth: 2,
+            formatter: (value, index) => x[index+this.chartInstance.getOption().dataZoom[0].startValue].label_de
           },
         },
         yAxis: {
@@ -93,6 +102,10 @@ export class ResultsComponent implements OnInit {
     });
   }
 
+  setInstance(event: any) {
+    this.chartInstance = event;
+  }
+
   showDetail(event: any) {
     this.dataService.getSpeciesDetail(event.name).subscribe((species: SpeciesDatum[]) => {
 
@@ -107,7 +120,7 @@ export class ResultsComponent implements OnInit {
 
       this.detailOptions = {
         title: {
-          text: event.name,
+          text: `${this.species[event.dataIndex].label_de} (${this.species[event.dataIndex].species})`,
         },
         color: '#673ab7',
         notMerge: true,
