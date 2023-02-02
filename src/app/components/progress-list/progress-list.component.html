@@ -2,5 +2,5 @@
 <div *ngFor="let p of progressList" style="display: grid; grid-template-columns: 0.5fr 1fr 2fr; column-gap: 10px;align-items: center; justify-items: start;">
   <span>{{ p.id }}</span>
   <span>{{ p.percent | number: '1.2-2' }}% ({{p.complete}} / {{ p.pending + p.complete}})</span>
-  <mat-progress-bar mode="determinate" value="{{p.percent}}"></mat-progress-bar>
+  <mat-progress-bar mode="determinate" [value]="p.percent"></mat-progress-bar>
 </div>
