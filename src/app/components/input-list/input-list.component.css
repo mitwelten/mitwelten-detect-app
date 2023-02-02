@@ -7,6 +7,6 @@
   overflow-y: auto;
 }
 
-td.mat-cell {
+td.mat-mdc-cell {
   text-align: left;
 }
